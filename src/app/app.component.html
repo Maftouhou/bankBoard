@@ -2,14 +2,16 @@
     <header>
         <app-header> </app-header>
     </header>
-    
     <section>
         <nav>
             <app-nav> </app-nav>
         </nav>
-        <main>
+        <div class="col-md-2"></div>
+        <main class="col-md-8">
+            <flash-messages> </flash-messages>
             <router-outlet> </router-outlet>
         </main>
+        <div class="col-md-2"></div>
     </section>
     <footer>
         <app-footer> </app-footer>
