@@ -1,3 +1,13 @@
-<p>
-  connexion works!
-</p>
+<h2 class="page-header">Connexion</h2>
+
+<form (submit)="onLoginSubmit()" >
+    <p class="form-group">
+        <label for="">Email</label>
+        <input type="email" [(ngModel)]="email" name="email" ></p>
+
+    <p class="form-group">
+        <label for="">Password</label>
+        <input type="password" [(ngModel)]="password" name="password" ></p>
+
+    <p><input type="submit" value="send"></p>
+</form>

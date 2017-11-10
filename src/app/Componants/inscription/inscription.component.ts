@@ -36,6 +36,7 @@ export class InscriptionComponent implements OnInit {
         
         // Required Field
         if (!this.validateService.validateRegister(user)){
+            console.log(user);
             this.flashMessages.show('fill in all the field',
             {cssClass: 'alert-info', timeout: 3000}
             );
@@ -43,6 +44,7 @@ export class InscriptionComponent implements OnInit {
         
         // Required correct email
         if (!this.validateService.validateEmail(user.email)){
+            console.log(user);
             this.flashMessages.show('use a valide email',
             {cssClass: 'alert-info', timeout: 3000}
             );

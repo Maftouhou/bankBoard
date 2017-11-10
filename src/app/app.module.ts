@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { HttpModule } from '@angular/http';
+import { AuthGuard } from './guard/auth.guard';
 
 // Componants
 import { AppComponent } from './app.component';
@@ -29,7 +30,7 @@ const appRoutes: Routes = [
     {path: 'inscription', component: InscriptionComponent},
     {path: 'connexion', component: ConnexionComponent},
     {path: 'dashboard', component: DashboardComponent},
-    {path: 'profle', component: ProfileComponent}
+    {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]/**/}
 ];
 
 @NgModule({
@@ -55,7 +56,7 @@ const appRoutes: Routes = [
         FlashMessagesModule,
         HttpModule
     ],
-    providers: [ValidateService, AuthentificationService],
+    providers: [ValidateService, AuthentificationService, AuthGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
