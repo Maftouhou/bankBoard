@@ -10,10 +10,10 @@ import {Router} from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-        constructor(private authentification: AuthentificationService,
-                private router: Router,
-                private flashMessagesService: FlashMessagesService
-                ) { }
+    constructor(private authentification: AuthentificationService,
+            private router: Router,
+            private flashMessagesService: FlashMessagesService
+            ) { }
 
     ngOnInit() {
     }

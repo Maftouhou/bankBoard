@@ -14,23 +14,34 @@ import { FooterComponent } from './Componants/footer/footer.component';
 import { InscriptionComponent } from './Componants/inscription/inscription.component';
 import { ConnexionComponent } from './Componants/connexion/connexion.component';
 import { MouvementComponent } from './Componants/mouvement/mouvement.component';
-import { ParametreComponent } from './Componants/parametre/parametre.component';
 import { ContactComponent } from './Componants/contact/contact.component';
 import { HomeComponent } from './Componants/home/home.component';
-import { BashboardComponent } from './Componants/bashboard/bashboard.component';
 import { ProfileComponent } from './Componants/profile/profile.component';
 import { DashboardComponent } from './Componants/dashboard/dashboard.component';
+import { HistoriqueMouvementComponent } from './Componants/historique-mouvement/historique-mouvement.component';
+import { MessagingComponent } from './Componants/messaging/messaging.component';
+import { QuiSommmeNousComponent } from './Componants/FooterInfo/qui-sommme-nous/qui-sommme-nous.component';
+import { MentionLegalComponent } from './Componants/FooterInfo/mention-legal/mention-legal.component';
 
 // Services
-import {ValidateService} from './Services/validate.service';
 import {AuthentificationService} from './Services/authentification.service';
+import {ValidateService} from './Services/validate.service';
 
 const appRoutes: Routes = [
+    /*Nav Links*/
     {path: '', component: HomeComponent},
+    {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+    {path: 'mouvement', component: MouvementComponent, canActivate: [AuthGuard]},
+    {path: 'historique_mouvement', component: HistoriqueMouvementComponent, canActivate: [AuthGuard]},
+    {path: 'messaging', component: MessagingComponent, canActivate: [AuthGuard]},
+    {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+    /*Home Links*/
     {path: 'inscription', component: InscriptionComponent},
     {path: 'connexion', component: ConnexionComponent},
-    {path: 'dashboard', component: DashboardComponent},
-    {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]/**/}
+    /*Footer Links*/
+    {path: 'qui_sommes_nous', component: QuiSommmeNousComponent},
+    {path: 'mention_legal', component: MentionLegalComponent},
+    {path: 'contact_nous', component: ContactComponent}
 ];
 
 @NgModule({
@@ -42,12 +53,14 @@ const appRoutes: Routes = [
         InscriptionComponent,
         ConnexionComponent,
         MouvementComponent,
-        ParametreComponent,
         ContactComponent,
         HomeComponent,
-        BashboardComponent,
         ProfileComponent,
-        DashboardComponent
+        DashboardComponent,
+        HistoriqueMouvementComponent,
+        MessagingComponent,
+        QuiSommmeNousComponent,
+        MentionLegalComponent
     ],
     imports: [
         BrowserModule,
