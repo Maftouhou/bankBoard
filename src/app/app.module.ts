@@ -26,19 +26,17 @@ import { MentionLegalComponent } from './Componants/FooterInfo/mention-legal/men
 // Services
 import {AuthentificationService} from './Services/authentification.service';
 import {ValidateService} from './Services/validate.service';
+import {DashboardService} from './Services/dashboard.service';
 
 const appRoutes: Routes = [
-    /*Nav Links*/
     {path: '', component: HomeComponent},
     {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
     {path: 'mouvement', component: MouvementComponent, canActivate: [AuthGuard]},
     {path: 'historique_mouvement', component: HistoriqueMouvementComponent, canActivate: [AuthGuard]},
     {path: 'messaging', component: MessagingComponent, canActivate: [AuthGuard]},
     {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-    /*Home Links*/
     {path: 'inscription', component: InscriptionComponent},
     {path: 'connexion', component: ConnexionComponent},
-    /*Footer Links*/
     {path: 'qui_sommes_nous', component: QuiSommmeNousComponent},
     {path: 'mention_legal', component: MentionLegalComponent},
     {path: 'contact_nous', component: ContactComponent}
@@ -69,7 +67,9 @@ const appRoutes: Routes = [
         FlashMessagesModule,
         HttpModule
     ],
-    providers: [ValidateService, AuthentificationService, AuthGuard],
+    providers: [ValidateService, AuthentificationService, 
+                AuthGuard, DashboardService],
+                
     bootstrap: [AppComponent]
 })
 export class AppModule { }
