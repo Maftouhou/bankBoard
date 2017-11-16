@@ -1,3 +1,29 @@
-<p>
-  dashboard works!
-</p>
+<div class="sold_wrapper">
+    <div *ngIf="user_informations">
+        <div class="local_currency">
+            <p class="euro_currency">{{user_informations.sold.amount}}<span> €</span></p>
+        </div>
+        <div class="foreign_currency">
+            <p class="dollar_currency">{{user_informations.sold.amount}}<span> $</span></p>
+            <p class="pound_currency">{{user_informations.sold.amount}}<span> £</span></p>
+        </div>
+    </div>
+    <div *ngIf="!user_informations">
+        <p>Sold indisponible pour le moment !!!</p>
+    </div>
+</div>
+<div class="transactions_wrapper">
+    <div *ngIf="transactions">
+        <ul>
+            <li *ngFor="let transaction of transactions"> 
+                <p> {{transaction.dateOpperation}} </p>
+                <p> {{transaction.amount}} <span>€</span></p>
+                <p> {{transaction.description}} </p>
+                <p> <a>Details</a> </p>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="!transactions">
+        <p>Aucun mouvement à afficher !!!</p>
+    </div>
+</div>

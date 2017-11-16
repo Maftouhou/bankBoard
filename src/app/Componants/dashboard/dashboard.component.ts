@@ -8,17 +8,24 @@ import {DashboardService} from '../../Services/dashboard.service';
 })
 export class DashboardComponent implements OnInit {
 
-    transaction: any;
+    transactions: any;
+    user_informations: any;
+    
     constructor(public dashboardService: DashboardService) {}
 
     ngOnInit() {
-        this.dashboardService.getAllTransaction('id').subscribe(transaction => {
-            this.transaction = transaction;
-            console.log(this.transaction);
-        });
-        console.log("this.transaction");
+        this.loadDashboardData();
     }
     
-    
-
+    loadDashboardData(){
+        this.dashboardService.getCurentUserFullInfo().subscribe(user => {
+            this.user_informations = user;
+            
+        }, err => { console.log(err); });
+        
+        this.dashboardService.getAllTransaction().transaction.subscribe(transaction => {
+            this.transactions = transaction;
+            
+        }, err => { console.log(err); });
+    }
 }
