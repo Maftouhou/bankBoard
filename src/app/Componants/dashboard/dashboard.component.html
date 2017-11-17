@@ -1,29 +1,32 @@
 <div class="sold_wrapper">
-    <div *ngIf="user_informations">
+    <div *ngIf="soldData">
         <div class="local_currency">
-            <p class="euro_currency">{{user_informations.sold.amount}}<span> €</span></p>
+            <p class="euro_currency">{{soldData.amount}}<span> €</span></p>
         </div>
         <div class="foreign_currency">
-            <p class="dollar_currency">{{user_informations.sold.amount}}<span> $</span></p>
-            <p class="pound_currency">{{user_informations.sold.amount}}<span> £</span></p>
+            <p class="dollar_currency">{{soldData.amount}}<span> $</span></p>
+            <p class="pound_currency">{{soldData.amount}}<span> £</span></p>
         </div>
     </div>
-    <div *ngIf="!user_informations">
+    <div *ngIf="!soldData">
         <p>Sold indisponible pour le moment !!!</p>
     </div>
 </div>
 <div class="transactions_wrapper">
-    <div *ngIf="transactions">
+    <div *ngIf="transactionsData">
+        
         <ul>
-            <li *ngFor="let transaction of transactions"> 
+            <li *ngFor="let transaction of transactionsData"> 
                 <p> {{transaction.dateOpperation}} </p>
-                <p> {{transaction.amount}} <span>€</span></p>
+                <p> <span>{{userData ? (userData._id===transaction.user_id ? '-' : '+') : ('') }}</span>
+                    {{transaction.amount}} <span>€</span>
+                </p>
                 <p> {{transaction.description}} </p>
                 <p> <a>Details</a> </p>
             </li>
         </ul>
     </div>
-    <div *ngIf="!transactions">
+    <div *ngIf="!transactionsData">
         <p>Aucun mouvement à afficher !!!</p>
     </div>
 </div>

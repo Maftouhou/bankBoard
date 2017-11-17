@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DashboardService} from '../../Services/dashboard.service';
+import {AuthentificationService} from '../../Services/authentification.service';
+import {SoldService} from '../../Services/sold/sold.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -8,24 +10,26 @@ import {DashboardService} from '../../Services/dashboard.service';
 })
 export class DashboardComponent implements OnInit {
 
-    transactions: any;
-    user_informations: any;
+    userData: any;
+    transactionsData: any;
+    soldData: any;
     
-    constructor(public dashboardService: DashboardService) {}
+    constructor(public dashboardService: DashboardService,
+                public authentification: AuthentificationService,
+                public soldService: SoldService) {}
 
     ngOnInit() {
         this.loadDashboardData();
     }
     
     loadDashboardData(){
-        this.dashboardService.getCurentUserFullInfo().subscribe(user => {
-            this.user_informations = user;
-            
+        this.dashboardService.getAllTransaction().transaction.subscribe(transaction => {
+            this.transactionsData = transaction;
         }, err => { console.log(err); });
         
-        this.dashboardService.getAllTransaction().transaction.subscribe(transaction => {
-            this.transactions = transaction;
-            
-        }, err => { console.log(err); });
+        this.soldService.getCurentUserInformations().subscribe(user => {
+            this.userData = user.userInfo;
+            this.soldData = user.sold;
+        }, err => { console.log(err); });        
     }
 }

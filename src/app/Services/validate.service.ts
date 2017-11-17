@@ -1,15 +1,31 @@
 import { Injectable } from '@angular/core';
-import {User} from '../models/userModel';
 
 @Injectable()
 export class ValidateService {
     
     constructor() { }
     
+    /**
+     * Validate the registration of a user :
+     */
     validateRegister(user: any) {
         if (user.firstName === undefined || user.lastName === undefined 
             || user.phone === undefined || user.email === undefined || user.password === undefined){
             console.log(user);
+            return false;
+        }else{ return true; }
+    }
+    
+    /**
+     * Validate the registration of a transaction :
+     */
+    validateTransaction(transaction: any) {
+        if (transaction.user_id === undefined || 
+            transaction.dateOpperation === undefined || 
+            transaction.dateOpperation === undefined || 
+            transaction.amount === undefined || 
+            transaction.description === undefined){
+            
             return false;
         }else{ return true; }
     }

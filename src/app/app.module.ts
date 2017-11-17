@@ -27,6 +27,8 @@ import { MentionLegalComponent } from './Componants/FooterInfo/mention-legal/men
 import {AuthentificationService} from './Services/authentification.service';
 import {ValidateService} from './Services/validate.service';
 import {DashboardService} from './Services/dashboard.service';
+import {TransactionService} from './Services/transaction/transaction.service';
+import {SoldService} from './Services/sold/sold.service';
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -68,7 +70,8 @@ const appRoutes: Routes = [
         HttpModule
     ],
     providers: [ValidateService, AuthentificationService, 
-                AuthGuard, DashboardService],
+                AuthGuard, DashboardService, TransactionService,
+                SoldService],
                 
     bootstrap: [AppComponent]
 })
