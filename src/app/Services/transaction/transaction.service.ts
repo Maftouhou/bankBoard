@@ -15,6 +15,18 @@ export class TransactionService {
         let header = new Headers();
         header.append('Authorization', this.authentification.authToken);
         header.append('Content-Type', 'Application/json');
-        return this.http.post('http://localhost:3000/instant_opp/', transaction, {headers: header}).map(res => res.json());
+        
+        if(transaction.schedulled_opperation === false){
+           
+            delete transaction.dateOpperation;
+            delete transaction.schedulled_opperation;
+            return this.http.post('http://localhost:3000/instant_opp/', transaction, {headers: header}).map(res => res.json());
+        }else{
+            
+            delete transaction.schedulled_opperation;
+            return this.http.post('http://localhost:3000/scheduled_opp/', transaction, {headers: header}).map(res => res.json());
+        }
+
+        
     }
 }

@@ -12,7 +12,8 @@ import {Router} from '@angular/router';
     styleUrls: ['./mouvement.component.css']
 })
 export class MouvementComponent implements OnInit {
-    
+    schedulled_opperation: boolean;
+
     user_id: string;
     account_num: string;
     dateOpperation: Date;
@@ -24,9 +25,17 @@ export class MouvementComponent implements OnInit {
         private flashMessages: FlashMessagesService,
         private authentificationService: AuthentificationService,
         private transactionService: TransactionService,
-        private router: Router, public soldService: SoldService) {}
+        private router: Router, public soldService: SoldService) { }
 
     ngOnInit() {
+        /**
+         * Set default status for scheduled opperation
+         */
+        this.schedulled_opperation = false;
+        
+        /**
+         * Get all user inforamtions from local storage
+         */
         if(this.authentificationService.loggedIn()){
             this.authentificationService.getTocken();
             this.user_id = this.authentificationService.user._id;
@@ -34,6 +43,18 @@ export class MouvementComponent implements OnInit {
             this.soldService.getCurentUserInformations().subscribe(user => {
                 this.user_sold = user.sold.amount;
             });
+        }
+    }
+    
+    /**
+     * Toogle display transaction form
+     */
+    instantOpperationForm(evt: any){
+
+        if(evt === "instant_opperation"){
+            this.schedulled_opperation = false;
+        }else if(evt === "schedulled_opperation"){
+            this.schedulled_opperation = true;
         }
     }
     
@@ -45,7 +66,8 @@ export class MouvementComponent implements OnInit {
             dateOpperation: this.dateOpperation,
             description: this.description,
             amount: this.amount,
-            user_sold: this.user_sold
+            user_sold: this.user_sold,
+            schedulled_opperation: this.schedulled_opperation
         };
         
         if (!this.validateService.validateTransaction(transaction)){
@@ -54,7 +76,6 @@ export class MouvementComponent implements OnInit {
             );
         }else{
             this.transactionService.CreateTransaction(transaction).subscribe(transaction => {
-                    console.log(transaction);
                 if(transaction.status){
                     this.flashMessages.show(transaction.message, {cssClass: 'alert-success', timeout: 6000} );
                 }else if(transaction._id){

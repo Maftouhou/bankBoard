@@ -1,20 +1,31 @@
-<h2 class="page-header">Faire un virement </h2>
+<h2>Faire un virement : choisissez le type de virement.</h2>
 <form (submit)="registrerOpperation()" >
-
-    <input type="hidden" [(ngModel)]="user_id" name="user_id" value="" >
-    <input type="hidden" [(ngModel)]="user_sold" name="user_sold" value="" >
-        
-    <p><label for="account_num">Account Number</label>
-        <input type="text" [(ngModel)]="account_num" name="account_num" id="account_num" required="required"></p>
-
-    <p><label for="dateOpperation">Date </label>
-        <input type="date" [(ngModel)]="dateOpperation" name="dateOpperation" id="dateOpperation" required="required"></p>
+    <p> <label for="instant_opperation">Opperaiton instané</label>
+        <input id="instant_opperation" name="form_choice" type="radio" 
+               (click)="instantOpperationForm($event.target.id)" type="radio" [checked]="!schedulled_opperation" /> </p>
     
-    <p><label for="amount">Amount</label>
-        <input type="number" [(ngModel)]="amount" name="amount" id="amount" required="required"></p>
+    <p> <label for="schedulled_opperation">Opperaiton planifiés</label>
+        <input id="schedulled_opperation" name="form_choice" 
+               (click)="instantOpperationForm($event.target.id)" type="radio" [checked]="schedulled_opperation" /> </p>
+    
+    <fieldset class="schedulled_opperation">
+        <legend>Opperations {{schedulled_opperation ? 'planifié' : 'instantané'}}</legend>
+        
+        <input type="hidden" [(ngModel)]="user_id" name="user_id" value="" >
+        <input type="hidden" [(ngModel)]="user_sold" name="user_sold" value="" >
 
-    <p><label for="description">Description</label>
-        <input type="text" [(ngModel)]="description" name="description" id="description" required="required"></p>
+        <p><label for="account_num">Account Number</label>
+            <input type="text" [(ngModel)]="account_num" name="account_num" id="account_num" required="required"></p>
+
+        <p *ngIf="schedulled_opperation"><label for="dateOpperation">Date </label>
+            <input type="date" [(ngModel)]="dateOpperation" name="dateOpperation" id="dateOpperation" required="required"></p>
+
+        <p><label for="amount">Amount</label>
+            <input type="number" [(ngModel)]="amount" name="amount" id="amount" required="required"></p>
+
+        <p><label for="description">Description</label>
+            <input type="text" [(ngModel)]="description" name="description" id="description" required="required"></p>
+    </fieldset>
 
     <p><input type="submit" value="Send"></p>
 </form>

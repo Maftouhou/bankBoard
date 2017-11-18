@@ -9,9 +9,12 @@ export class ValidateService {
      * Validate the registration of a user :
      */
     validateRegister(user: any) {
-        if (user.firstName === undefined || user.lastName === undefined 
-            || user.phone === undefined || user.email === undefined || user.password === undefined){
-            console.log(user);
+        if (user.firstName === undefined || 
+            user.lastName === undefined || 
+            user.phone === undefined || 
+            user.email === undefined || 
+            user.password === undefined){
+            
             return false;
         }else{ return true; }
     }
@@ -21,9 +24,10 @@ export class ValidateService {
      */
     validateTransaction(transaction: any) {
         if (transaction.user_id === undefined || 
-            transaction.dateOpperation === undefined || 
-            transaction.dateOpperation === undefined || 
+            // transaction.dateOpperation === undefined || 
+            transaction.account_num === undefined || 
             transaction.amount === undefined || 
+            transaction.user_sold === undefined || 
             transaction.description === undefined){
             
             return false;
