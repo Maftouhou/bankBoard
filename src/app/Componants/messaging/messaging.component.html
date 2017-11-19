@@ -1,7 +1,8 @@
 <h1>The Panama BANK</h1>
 <p>Welcome to the Panama Bank Customer service !</p>
+
 <div *ngFor="let message of messages">
-    {{message.text}}
+    <span>{{message.text.user.firstName}} : </span> {{message.text.content}}
 </div>
 <p> <input [(ngModel)]="message"  /> </p>
 <p> <button (click)="sendMessage()">Send</button> </p>
