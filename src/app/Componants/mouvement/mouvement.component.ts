@@ -13,6 +13,7 @@ import {Router} from '@angular/router';
 })
 export class MouvementComponent implements OnInit {
     schedulled_opperation: boolean;
+    updateTransactionData: any;
 
     user_id: string;
     account_num: string;
@@ -25,7 +26,10 @@ export class MouvementComponent implements OnInit {
         private flashMessages: FlashMessagesService,
         private authentificationService: AuthentificationService,
         private transactionService: TransactionService,
-        private router: Router, public soldService: SoldService) { }
+        private router: Router, public soldService: SoldService) {
+
+        }
+
 
     ngOnInit() {
         /**
@@ -79,7 +83,8 @@ export class MouvementComponent implements OnInit {
                 if(transaction.status){
                     this.flashMessages.show(transaction.message, {cssClass: 'alert-success', timeout: 6000} );
                 }else if(transaction._id){
-                    this.flashMessages.show('votre transaction du montant de "' + transaction.amount + ' " a été effectué.',
+                    let complementNotification: string = (this.schedulled_opperation === true ? ' est enregistré.' : ' a été effectué.');
+                    this.flashMessages.show('votre transaction du montant de "' + transaction.amount + '"' + complementNotification,
                         {cssClass: 'alert-success', timeout: 6000} );
                     this.router.navigate(['/dashboard']);
                 }else{

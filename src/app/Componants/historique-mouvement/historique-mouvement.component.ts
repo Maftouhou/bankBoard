@@ -1,15 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {AuthentificationService} from '../../Services/authentification.service';
+import {SoldService} from '../../Services/sold/sold.service';
+import {TransactionService} from '../../Services/transaction/transaction.service';
+import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-historique-mouvement',
-  templateUrl: './historique-mouvement.component.html',
-  styleUrls: ['./historique-mouvement.component.css']
+    selector: 'app-historique-mouvement',
+    templateUrl: './historique-mouvement.component.html',
+    styleUrls: ['./historique-mouvement.component.css']
 })
 export class HistoriqueMouvementComponent implements OnInit {
 
-  constructor() { }
+    scheduledOpperations: any;
+    
+    constructor(public authentification: AuthentificationService,
+                public soldService: SoldService, public router: Router,
+                public transactionService: TransactionService) {}
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.loadScheduledOpperations();
+    }
+    
+    @Output() onUpdate = new EventEmitter();
+    
+    loadScheduledOpperations(){
+        this.transactionService.getSchedulledOpperations().subscribe(schedulledOpp => {
+            this.scheduledOpperations = schedulledOpp;
+        }, err => { console.log(err); });       
+    }
+    
+    /**
+     * Cancel opperation that still undone
+     */
+    cancelOpperation(opperationId: any){
+        
+        this.transactionService.removeOneScheduledOpperation(opperationId.target.className).subscribe(data => { 
+            location.reload();
+        });
+    }
 
 }

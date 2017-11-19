@@ -1,3 +1,39 @@
-<p>
-  historique-mouvement works!
-</p>
+<div class="transactions_wrapper">
+    <div *ngIf="scheduledOpperations; else noScheduledopperation">
+        <h1>Opperation realisé</h1>
+        <ul>
+            <li *ngFor="let opperation of scheduledOpperations"> 
+                <div *ngIf="opperation.statusOpperation==='done'">
+                    <p> Date de l'opperation : {{opperation.created_at}} </p>
+                    <p> Montant : {{opperation.amount}} <span>€</span> </p>
+                    <p> Prevu pour : {{opperation.created_at}} </p>
+                    <p> description : {{opperation.description}} </p>
+                    <p> Status de l'opperaiton : {{opperation.statusOpperation}} </p>
+                    <hr />
+                </div>
+            </li>
+        </ul>
+        
+        <p>============================================================</p>
+        <h1>Opperation non réalisés : </h1>
+        <ul>
+            <li *ngFor="let opperation of scheduledOpperations"> 
+                <div *ngIf="opperation.statusOpperation==='undone'">
+                    <p> Date de l'opperation : {{opperation.created_at}} </p>
+                    <p> Montant : {{opperation.amount}} <span>€</span> </p>
+                    <p> Prevu pour : {{opperation.created_at}} </p>
+                    <p> description : {{opperation.description}} </p>
+                    <p> Status de l'opperaiton : {{opperation.statusOpperation}} </p>
+                    <p> Commentaire : {{opperation.statusRepport.comment}} </p>
+                    <p>
+                        <a (click)="cancelOpperation($event)" class="{{opperation._id}}">Annuler</a>
+                    </p>
+                    <hr />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <ng-template #noScheduledopperation>
+        <p>Aucun mouvement planifié !!!</p>
+    </ng-template>
+</div>
