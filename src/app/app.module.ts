@@ -29,6 +29,7 @@ import {ValidateService} from './Services/validate.service';
 import {DashboardService} from './Services/dashboard.service';
 import {TransactionService} from './Services/transaction/transaction.service';
 import {SoldService} from './Services/sold/sold.service';
+import {MessagingService} from './Services/messaging/messaging.service';
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -71,7 +72,7 @@ const appRoutes: Routes = [
     ],
     providers: [ValidateService, AuthentificationService, 
                 AuthGuard, DashboardService, TransactionService,
-                SoldService],
+                SoldService, MessagingService],
                 
     bootstrap: [AppComponent]
 })
