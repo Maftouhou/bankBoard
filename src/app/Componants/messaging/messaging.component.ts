@@ -41,6 +41,4 @@ export class MessagingComponent implements OnInit {
     ngOnDestroy() {
         this.connection.unsubscribe();
     }
-
-
 }

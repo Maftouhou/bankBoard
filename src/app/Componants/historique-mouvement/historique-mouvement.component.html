@@ -4,9 +4,9 @@
         <ul>
             <li *ngFor="let opperation of scheduledOpperations"> 
                 <div *ngIf="opperation.statusOpperation==='done'">
-                    <p> Date de l'opperation : {{opperation.created_at}} </p>
+                    <p> Date de l'opperation : {{opperation.created_at | date:'fullDate'}} </p>
                     <p> Montant : {{opperation.amount}} <span>€</span> </p>
-                    <p> Prevu pour : {{opperation.created_at}} </p>
+                    <p> Prevu pour : {{opperation.dateOpperation | date:'fullDate'}} </p>
                     <p> description : {{opperation.description}} </p>
                     <p> Status de l'opperaiton : {{opperation.statusOpperation}} </p>
                     <hr />
@@ -19,9 +19,9 @@
         <ul>
             <li *ngFor="let opperation of scheduledOpperations"> 
                 <div *ngIf="opperation.statusOpperation==='undone'">
-                    <p> Date de l'opperation : {{opperation.created_at}} </p>
+                    <p> Date de l'opperation : {{opperation.created_at | date:'fullDate'}} </p>
                     <p> Montant : {{opperation.amount}} <span>€</span> </p>
-                    <p> Prevu pour : {{opperation.created_at}} </p>
+                    <p> Prevu pour : {{opperation.dateOpperation | date:'fullDate'}} </p>
                     <p> description : {{opperation.description}} </p>
                     <p> Status de l'opperaiton : {{opperation.statusOpperation}} </p>
                     <p> Commentaire : {{opperation.statusRepport.comment}} </p>
