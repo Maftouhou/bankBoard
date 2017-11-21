@@ -1,12 +1,10 @@
-<div class="jumbotron text-center">
-    <h1>MEAN Auth App</h1>
-    <p class="lead">Welcom</p>
-    <div *ngIf="!authentification.loggedIn()">
-        <a [routerLink]="['/inscription']" >Inscription</a>
-        <a [routerLink]="['/connexion']" >Connexion</a>
+<div class="home_content">
+    <h1 class="home_title">The Panama BANK <span>WELCOM</span></h1>
+    <div class="registration_button" *ngIf="!authentification.loggedIn()">
+        <a [routerLink]="['/inscription']" ><span>Inscription</span></a>
+        <a [routerLink]="['/connexion']" ><span>Connexion</span></a>
     </div>
-    <div *ngIf="authentification.loggedIn()">
-        <a [routerLink]="['/dashboard']" >Dashboard</a>
+    <div class="dashboard_button" *ngIf="authentification.loggedIn()">
+        <a [routerLink]="['/dashboard']" ><span>Dashboard</span></a>
     </div>
 </div>
-<p>Home works</p>

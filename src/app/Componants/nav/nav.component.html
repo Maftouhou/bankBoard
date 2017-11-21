@@ -1,7 +1,7 @@
 <nav class="">
     <div class="">
-        <a [routerLink]="['/']" >Micro BANK</a>
-        <div id="" class="">
+        <a class="header_title" [routerLink]="['/']" >Micro BANK</a>
+        <div id="" class="menu_list">
             <ul class="">
                 <li *ngIf="authentification.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >
                     <a title="Visualiser tout les mouvement" [routerLink]="['/dashboard']">Dashboard</a></li>

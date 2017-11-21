@@ -17,12 +17,13 @@
         
         <ul>
             <li *ngFor="let transaction of transactionsData"> 
-                <p> {{transaction.dateOpperation}} </p>
-                <p> <span>{{userData ? (userData._id===transaction.user_id ? '-' : '+') : ('') }}</span>
+                <p class="{{userData ? (userData._id===transaction.user_id ? 'sent_trans' : 'received_trans') : ('') }}"> 
+                    <span>{{userData ? (userData._id===transaction.user_id ? '-' : '+') : ('') }}</span>
                     {{transaction.amount}} <span>€</span>
                 </p>
+                <p> {{transaction.dateOpperation | date}} </p>
                 <p> {{transaction.description}} </p>
-                <p> <a>Details</a> </p>
+                <!--<p> <a>Details</a> </p>-->
             </li>
         </ul>
     </div>
