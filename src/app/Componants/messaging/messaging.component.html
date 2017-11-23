@@ -1,8 +1,14 @@
-<h1>The Panama BANK</h1>
-<p>Welcome to the Panama Bank Customer service !</p>
+<div class="customer_service">
+    <h2>The Panama BANK</h2>
+    <p>Welcome to the Panama Bank Customer service !</p>
 
-<div *ngFor="let message of messages">
-    <span>{{message.text.user.firstName}} : </span> {{message.text.content}}
+    <div *ngFor="let message of messages" class="chat_messages">
+        <p class="{{message.text.user._id === user._id ? 'thisUser':'autherUser'}}">
+            <span> {{message.text.user.firstName}} : </span> {{message.text.content}}
+        </p>
+    </div>
+    <p>
+        <textarea rows="3" cols="40" [(ngModel)]="message" name="message"></textarea>
+    </p>
+    <p> <button (click)="sendMessage()">Send</button> </p>
 </div>
-<p> <input [(ngModel)]="message"  /> </p>
-<p> <button (click)="sendMessage()">Send</button> </p>

@@ -51,12 +51,12 @@ export class TransactionService {
     /**
      * Get all scheduled opperations
      */
-    getSchedulledOpperations(){
+    getSchedulledOpperations(user_id: string){
         let header = new Headers();
         this.authentification.getTocken();
         header.append('Authorization', this.authentification.authToken);
         header.append('Content-Type', 'Application/json');
-        return this.http.get('http://localhost:3000/scheduled_opp/', {headers: header}).map(res => res.json());
+        return this.http.get('http://localhost:3000/scheduled_opp/?user_id='+user_id, {headers: header}).map(res => res.json());
     }
     
     /**

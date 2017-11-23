@@ -1,5 +1,5 @@
-<h2>Faire un virement : choisissez le type de virement.</h2>
-<form (submit)="registrerOpperation()" >
+<form class="registration_form" (submit)="registrerOpperation()" >
+    <h2>Faire un virement : choisissez le type de virement.</h2>
     <p> <label for="instant_opperation">Opperaiton instané</label>
         <input id="instant_opperation" name="form_choice" type="radio" 
                (click)="instantOpperationForm($event.target.id)" type="radio" [checked]="!schedulled_opperation" /> </p>

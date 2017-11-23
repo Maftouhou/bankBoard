@@ -4,8 +4,8 @@
             <p class="euro_currency">{{soldData.amount}}<span> €</span></p>
         </div>
         <div class="foreign_currency">
-            <p class="dollar_currency">{{soldData.amount}}<span> $</span></p>
-            <p class="pound_currency">{{soldData.amount}}<span> £</span></p>
+            <p class="dollar_currency">{{soldData.amount * 1.18424}}<span> $</span></p>
+            <p class="pound_currency">{{soldData.amount * 0.890178}}<span> £</span></p>
         </div>
     </div>
     <div *ngIf="!soldData">
@@ -15,7 +15,7 @@
 <div class="transactions_wrapper">
     <div *ngIf="transactionsData">
         
-        <ul>
+        <ul class="dashboard_transaction_list">
             <li *ngFor="let transaction of transactionsData"> 
                 <p class="{{userData ? (userData._id===transaction.user_id ? 'sent_trans' : 'received_trans') : ('') }}"> 
                     <span>{{userData ? (userData._id===transaction.user_id ? '-' : '+') : ('') }}</span>

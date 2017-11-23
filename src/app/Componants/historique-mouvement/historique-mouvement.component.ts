@@ -18,13 +18,14 @@ export class HistoriqueMouvementComponent implements OnInit {
                 public transactionService: TransactionService) {}
 
     ngOnInit() {
-        this.loadScheduledOpperations();
+        console.log(this.authentification.user._id);
+        this.loadScheduledOpperations(this.authentification.user._id);
     }
     
     @Output() onUpdate = new EventEmitter();
     
-    loadScheduledOpperations(){
-        this.transactionService.getSchedulledOpperations().subscribe(schedulledOpp => {
+    loadScheduledOpperations(user_id: string){
+        this.transactionService.getSchedulledOpperations(user_id).subscribe(schedulledOpp => {
             this.scheduledOpperations = schedulledOpp;
         }, err => { console.log(err); });       
     }

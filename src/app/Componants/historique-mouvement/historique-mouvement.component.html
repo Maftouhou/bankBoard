@@ -1,36 +1,39 @@
 <div class="transactions_wrapper">
     <div *ngIf="scheduledOpperations; else noScheduledopperation">
-        <h1>Opperation realisé</h1>
-        <ul>
-            <li *ngFor="let opperation of scheduledOpperations"> 
-                <div *ngIf="opperation.statusOpperation==='done'">
-                    <p> Date de l'opperation : {{opperation.created_at | date:'fullDate'}} </p>
-                    <p> Montant : {{opperation.amount}} <span>€</span> </p>
-                    <p> Prevu pour : {{opperation.dateOpperation | date:'fullDate'}} </p>
-                    <p> description : {{opperation.description}} </p>
-                    <p> Status de l'opperaiton : {{opperation.statusOpperation}} </p>
-                    <hr />
-                </div>
-            </li>
+        <h2>Liste des opperations realisés</h2>
+        <ul class="opperation_done">
+            <div *ngFor="let opperation of scheduledOpperations">
+                <li *ngIf="opperation.statusOpperation==='done'">
+                    <div class="{{opperation.statusOpperation==='done' ? 'showTrans':'hideTrans'}}">
+                        <p> <span> Date de l'opperation : </span>{{opperation.created_at | date:'fullDate'}} </p>
+                        <p> <span> Montant : </span>{{opperation.amount}} <span>€</span> </p>
+                        <p> <span> Prevu pour : </span>{{opperation.dateOpperation | date:'fullDate'}} </p>
+                        <p> <span> description : </span>{{opperation.description}} </p>
+                        <p> <span> Status de l'opperaiton : </span>{{opperation.statusOpperation}} </p>
+                    </div>
+                </li>
+            </div>
         </ul>
-        
-        <p>============================================================</p>
-        <h1>Opperation non réalisés : </h1>
-        <ul>
-            <li *ngFor="let opperation of scheduledOpperations"> 
-                <div *ngIf="opperation.statusOpperation==='undone'">
-                    <p> Date de l'opperation : {{opperation.created_at | date:'fullDate'}} </p>
-                    <p> Montant : {{opperation.amount}} <span>€</span> </p>
-                    <p> Prevu pour : {{opperation.dateOpperation | date:'fullDate'}} </p>
-                    <p> description : {{opperation.description}} </p>
-                    <p> Status de l'opperaiton : {{opperation.statusOpperation}} </p>
-                    <p> Commentaire : {{opperation.statusRepport.comment}} </p>
-                    <p>
-                        <a (click)="cancelOpperation($event)" class="{{opperation._id}}">Annuler</a>
-                    </p>
-                    <hr />
-                </div>
-            </li>
+    </div>
+
+    <div *ngIf="scheduledOpperations; else noScheduledopperation">
+        <h2>Liste des opperations en attente : </h2>
+        <ul class="opperation_undone">
+            <div *ngFor="let opperation of scheduledOpperations" >                
+                <li *ngIf="opperation.statusOpperation==='undone'"> 
+                    <div class="{{opperation.statusOpperation==='undone' ? 'showTrans':'hideTrans'}}">
+                        <p> <span>Date de l'opperation : </span>{{opperation.created_at | date:'fullDate'}} </p>
+                        <p> <span>Montant : </span>{{opperation.amount}} <span>€</span> </p>
+                        <p> <span>Prevu pour : </span>{{opperation.dateOpperation | date:'fullDate'}} </p>
+                        <p> <span>description : </span>{{opperation.description}} </p>
+                        <p> <span>Status de l'opperaiton : </span>{{opperation.statusOpperation}} </p>
+                        <p> <span>Commentaire : </span>{{opperation.statusRepport.comment}} </p>
+                        <p>
+                            <a (click)="cancelOpperation($event)" class="{{opperation._id}}">Annuler</a>
+                        </p>
+                    </div>
+                </li>
+            </div>
         </ul>
     </div>
     <ng-template #noScheduledopperation>

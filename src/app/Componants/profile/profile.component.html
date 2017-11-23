@@ -1,13 +1,12 @@
-<div *ngIf="user">
-    <h2 class="page-header">{{user.firstName}}</h2>
-    <ul class="list-group">
-        <li class="list-group-item">{{user.lastName}}</li>
-        <li class="list-group-item">{{user.email}}</li>
-        <li class="list-group-item">{{user.phone}}</li>
+<div class="profile_section" *ngIf="user">
+    <h2 class="user_name">{{user.firstName}} <span>{{user.lastName}}</span> </h2>
+    <ul class="user_information">
+        <li>{{user.email}}</li>
+        <li>{{user.phone}}</li>
     </ul>
-    <p>Information du compte :</p>
-    <ul>
-        <li>Sold present à ce jour : {{userSold.amount}} €</li>
-        <li>Numero de compte : {{userSold.Account_num}}</li>
+    <h2>Information du compte :</h2>
+    <ul class="user_account_information">
+        <li>Sold present à ce jour : <span> {{userSold.amount}} € </span></li>
+        <li>Numero de compte : <span>{{userSold.Account_num}} </span></li>
     </ul>
 </div>

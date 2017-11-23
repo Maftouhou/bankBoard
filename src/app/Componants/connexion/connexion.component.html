@@ -1,13 +1,12 @@
-<h2 class="page-header">Connexion</h2>
+<form class="connexion_form" (submit)="onLoginSubmit()" >
+    <h2>Connexion</h2>
+    <p>
+        <label for="email">Email</label>
+        <input id="email" type="email" [(ngModel)]="email" name="email" ></p>
 
-<form (submit)="onLoginSubmit()" >
-    <p class="form-group">
-        <label for="">Email</label>
-        <input type="email" [(ngModel)]="email" name="email" ></p>
-
-    <p class="form-group">
-        <label for="">Password</label>
-        <input type="password" [(ngModel)]="password" name="password" ></p>
+    <p>
+        <label for="password">Password</label>
+        <input id="password" type="password" [(ngModel)]="password" name="password" ></p>
 
     <p><input type="submit" value="send"></p>
 </form>
