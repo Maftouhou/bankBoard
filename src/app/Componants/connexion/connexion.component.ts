@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthentificationService} from '../../Services/authentification.service';
+import { AuthentificationService } from '../../Services/authentification.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import {AuthGuard} from '../../guard/auth.guard';
 
 
 @Component({
@@ -15,11 +16,14 @@ export class ConnexionComponent implements OnInit {
     password: string;
 
     constructor(private authentification: AuthentificationService,
-                private router: Router,
+                private router: Router, public authGuard: AuthGuard,
                 private flashMessagesService: FlashMessagesService
                 ) { }
 
     ngOnInit() {
+        if (this.authGuard.isLoggedIn()){
+            this.router.navigate(['/']);
+        }
     }
 
     onLoginSubmit(){

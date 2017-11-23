@@ -5,14 +5,24 @@ import {AuthentificationService} from '../Services/authentification.service';
 @Injectable()
 export class AuthGuard implements CanActivate {
     constructor(private authentification: AuthentificationService,
-                private router: Router) {}
-    
-    canActivate(){
-        if (this.authentification.loggedIn()){
+        private router: Router) {}
+
+    canActivate() {
+        if (this.authentification.loggedIn()) {
             return true;
-        }else{
+        } else {
             this.router.navigate(['/connexion']);
             return false;
+        }
+    }
+
+    isLoggedIn() {
+        if (this.authentification.loggedIn()) {
+            if (this.router.url === '/connexion') {
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 }
