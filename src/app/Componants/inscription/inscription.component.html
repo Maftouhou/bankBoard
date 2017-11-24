@@ -1,24 +1,24 @@
-<h2 class="page-header">Inscription </h2>
-<form (submit)="onRegisterSubmit()" >
-    <p class="form-group"><label for="">FirstName : {{firstName}} </label>
-        <input type="text" [(ngModel)]="firstName" name="firstName" 
-               class="form-control" required="required"></p>
+<form class="registration_form" (submit)="onRegisterSubmit()" >
+    <h2>Inscription </h2>
+    <p><label for="">FirstName </label>
+        <input type="text" [(ngModel)]="firstName" name="firstName" required="required"></p>
 
-    <p class="form-group"><label for="">LastName</label>
-        <input type="text" [(ngModel)]="lastName" name="lastName" 
-               class="form-control" required="required"></p>
+    <p><label for="">LastName</label>
+        <input type="text" [(ngModel)]="lastName" name="lastName" required="required"></p>
 
-    <p class="form-group"><label for="">Phone</label>
-        <input type="number" [(ngModel)]="phone" name="phone" 
-               class="form-control" required="required"></p>
+    <p><label for="">Phone</label>
+        <input type="number" [(ngModel)]="phone" name="phone" required="required"></p>
 
-    <p class="form-group"><label for="">Email</label>
-        <input type="email" [(ngModel)]="email" name="email" 
-               class="form-control" required="required"></p>
+    <p><label for="">Email</label>
+        <input type="email" [(ngModel)]="email" name="email" required="required"></p>
 
-    <p class="form-group"><label for="">Password</label>
-        <input type="password" [(ngModel)]="password" name="password" 
-               class="form-control" required="required"></p>
+    <p><label for="">Password</label>
+        <input type="password" [(ngModel)]="password" name="password" required="required"
+               class="{{passwordClass}}" ></p>
+    
+    <p><label for="">Confirm pass</label>
+        <input type="password" name="passwordConfirm" (input)="userPassWord($event)" 
+               class="{{passwordClass}}" /> </p>
 
     <p><input type="submit" value="Send"></p>
 </form>

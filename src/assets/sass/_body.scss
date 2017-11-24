@@ -39,6 +39,16 @@ body {
                             left: 49%;
                             border-radius: 15px;
                             background-color: #ffffff;
+
+                            span {
+                                border: 1px solid black;
+                                display: block;
+                                text-align: center;
+                                font-size: 40px;
+                                border-radius: 30px;
+                                font-weight: bold;
+                                color: #cc0079;
+                            }
                         }
                     }
                 }
@@ -294,15 +304,12 @@ body {
 
                     &.flash-messages {
                         div {
-                            background-color: #ffade3;
-                            border-right: 5px solid red;
                             padding: 10px;
                             display: inline-block;
                             margin-bottom: 10px;
                             p {
                                 font-size: 18px;
                                 font-family: arial;
-                                color: #ad0000; 
                             }
                         }
                     }
@@ -411,7 +418,8 @@ body {
                         }
                     }
 
-                    &.connexion_form {
+                    &.connexion_form,
+                    &.registration_form  {
                         h2{font-weight: bold; text-transform: uppercase;}
                         p, h2 {
                             margin-bottom: 12px;
@@ -421,9 +429,11 @@ body {
                         }
                         p {
                             label {
-                                min-width: 80px;
+                                min-width: 95px;
                                 display: inline-block;
                             }
+                            input[type="text"], 
+                            input[type="number"],
                             input[type="email"], 
                             input[type="password"]{
                                 background-color: #f1f1f1;
@@ -480,4 +490,24 @@ body {
 }
 .hideTrans {
     display: none;
+}
+
+.password_mach {
+    border: 1px solid #00bd00 !important;
+}
+
+.password_not_mach {
+    border: 1px solid red !important;
+}
+
+.errorInfo {
+    background-color: #ffade3;
+    border-right: 5px solid red;
+    color: #ad0000 !important;
+}
+
+.successInfo {
+    background-color: #c8a9ff;
+    border-right: 5px solid #673ab7;
+    color: #673ab7 !important;
 }
