@@ -3,6 +3,7 @@ import { AuthentificationService } from '../../Services/authentification.service
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 import {AuthGuard} from '../../guard/auth.guard';
+import {ValidateService} from '../../Services/validate.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class ConnexionComponent implements OnInit {
 
     constructor(private authentification: AuthentificationService,
                 private router: Router, public authGuard: AuthGuard,
-                private flashMessagesService: FlashMessagesService
+                private flashMessagesService: FlashMessagesService,
+                private validateService: ValidateService
                 ) { }
 
     ngOnInit() {
@@ -32,19 +34,31 @@ export class ConnexionComponent implements OnInit {
             password: this.password
         };
         
-        this.authentification.authenticateUser(user).subscribe(data => {
-            console.log(data);
-            if(data.success){
-                this.authentification.storeUserData(data.token, data.user);
-                this.router.navigate(['/']);
-            }else{
-                this.flashMessagesService.show(data.message, {
-                    cssClass: 'errorInfo',
-                    timeout: 6000
-                });
-                
-                this.router.navigate(['connexion']);
-            }
-        });
+        if (!this.validateService.validateConnexion(user)){
+            // Validating all the field
+            this.flashMessagesService.show('Veillez remplir tout les champs', {
+                cssClass: 'errorInfo', timeout: 6000 
+            });
+        }else if (!this.validateService.validateEmail(user.email)) {
+            // Required correct email
+            this.flashMessagesService.show('Veiller entrer un email valide',
+                {cssClass: 'errorInfo', timeout: 3000}
+            );
+        }else{
+            this.authentification.authenticateUser(user).subscribe(data => {
+                console.log(data);
+                if (data.success) {
+                    this.authentification.storeUserData(data.token, data.user);
+                    this.router.navigate(['/']);
+                } else {
+                    this.flashMessagesService.show(data.message, {
+                        cssClass: 'errorInfo',
+                        timeout: 6000
+                    });
+
+                    this.router.navigate(['connexion']);
+                }
+            });
+        }
     }
 }

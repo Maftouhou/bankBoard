@@ -8,6 +8,17 @@ export class ValidateService {
     /**
      * Validate the registration of a user :
      */
+    validateConnexion(user: any) {
+        if (user.email === undefined || 
+            user.password === undefined){
+            
+            return false;
+        }else{ return true; }
+    }
+    
+    /**
+     * Validate the registration of a user :
+     */
     validateRegister(user: any) {
         if (user.firstName === undefined || 
             user.lastName === undefined || 
