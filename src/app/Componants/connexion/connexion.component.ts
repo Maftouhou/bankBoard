@@ -39,7 +39,7 @@ export class ConnexionComponent implements OnInit {
                 this.router.navigate(['/']);
             }else{
                 this.flashMessagesService.show(data.message, {
-                    cssClass: 'alert-danger',
+                    cssClass: 'errorInfo',
                     timeout: 6000
                 });
                 

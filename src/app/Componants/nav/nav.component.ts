@@ -21,7 +21,7 @@ export class NavComponent implements OnInit {
     onLogoutClick() {
         this.authentification.logout();
         this.flashMessagesService.show('Logout successful', {
-            cssClass: 'alert-success',
+            cssClass: 'successInfo',
             timeout: 6000
         });
 

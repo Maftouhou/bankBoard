@@ -75,21 +75,21 @@ export class MouvementComponent implements OnInit {
         };
         
         if (!this.validateService.validateTransaction(transaction)){
-            this.flashMessages.show('fill in all the field',
-                {cssClass: 'alert-info', timeout: 3000}
+            this.flashMessages.show('Veillez remplir tout les champs !',
+                {cssClass: 'errorInfo', timeout: 3000}
             );
         }else{
             this.transactionService.CreateTransaction(transaction).subscribe(transaction => {
                 if(transaction.status){
-                    this.flashMessages.show(transaction.message, {cssClass: 'alert-success', timeout: 6000} );
+                    this.flashMessages.show(transaction.message, {cssClass: 'successInfo', timeout: 6000} );
                 }else if(transaction._id){
                     let complementNotification: string = (this.schedulled_opperation === true ? ' est enregistré.' : ' a été effectué.');
-                    this.flashMessages.show('votre transaction du montant de "' + transaction.amount + '"' + complementNotification,
-                        {cssClass: 'alert-success', timeout: 6000} );
+                    this.flashMessages.show('votre transaction du montant de "' + transaction.amount + '" €' + complementNotification,
+                        {cssClass: 'successInfo', timeout: 6000} );
                     this.router.navigate(['/dashboard']);
                 }else{
                     this.flashMessages.show("quelque chose à du mal se passé. raprochez-vous de votre service client pour plus d'information. ",
-                        {cssClass: 'alert-danger', timeout: 6000} );
+                        {cssClass: 'errorInfo', timeout: 6000} );
                     this.router.navigate(['/dashboard']);
                 }
             });
