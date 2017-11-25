@@ -17,7 +17,7 @@ export class SoldService {
             headers.append('Authorization', this.authentification.authToken);
             headers.append('Content-Type', 'Application/json');
             
-            return this.http.get('http://localhost:3000/users/' + this.authentification.user._id, {headers: headers})
+            return this.http.get('http://35.176.233.209/users/' + this.authentification.user._id, {headers: headers})
                 .map(res => res.json());
         }
     }

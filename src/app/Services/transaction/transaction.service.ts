@@ -41,10 +41,10 @@ export class TransactionService {
         if(transaction.schedulled_opperation === false){
             delete transaction.dateOpperation;
             delete transaction.schedulled_opperation;
-            return this.http.post('http://localhost:3000/instant_opp/', transaction, {headers: header}).map(res => res.json());
+            return this.http.post('http://35.176.233.209/instant_opp/', transaction, {headers: header}).map(res => res.json());
         }else{
             delete transaction.schedulled_opperation;
-            return this.http.post('http://localhost:3000/scheduled_opp/', transaction, {headers: header}).map(res => res.json());
+            return this.http.post('http://35.176.233.209/scheduled_opp/', transaction, {headers: header}).map(res => res.json());
         }
     }
     
@@ -56,7 +56,7 @@ export class TransactionService {
         this.authentification.getTocken();
         header.append('Authorization', this.authentification.authToken);
         header.append('Content-Type', 'Application/json');
-        return this.http.get('http://localhost:3000/scheduled_opp/?user_id='+user_id, {headers: header}).map(res => res.json());
+        return this.http.get('http://35.176.233.209/scheduled_opp/?user_id='+user_id, {headers: header}).map(res => res.json());
     }
     
     /**
@@ -68,7 +68,7 @@ export class TransactionService {
         header.append('Authorization', this.authentification.authToken);
         header.append('Content-Type', 'Application/json');
         
-        return this.http.get('http://localhost:3000/scheduled_opp/' + opperationId, {headers: header}).map(data => {data.json()});
+        return this.http.get('http://35.176.233.209/scheduled_opp/' + opperationId, {headers: header}).map(data => {data.json()});
     }
     
     /**
@@ -80,7 +80,7 @@ export class TransactionService {
         header.append('Authorization', this.authentification.authToken);
         header.append('Content-Type', 'Application/json');
         
-        return this.http.get('http://localhost:3000/users/' + coUserId, {headers: header}).map(userData => {userData.json()});
+        return this.http.get('http://35.176.233.209/users/' + coUserId, {headers: header}).map(userData => {userData.json()});
     }
         
     /**
@@ -92,6 +92,6 @@ export class TransactionService {
         header.append('Authorization', this.authentification.authToken);
         header.append('Content-Type', 'Application/json');
         
-        return this.http.delete('http://localhost:3000/scheduled_opp/' + opperationId, {headers: header}).map(data => {data.json()});
+        return this.http.delete('http://35.176.233.209/scheduled_opp/' + opperationId, {headers: header}).map(data => {data.json()});
     }
 }
