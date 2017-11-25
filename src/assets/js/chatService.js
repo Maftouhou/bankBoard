@@ -1,7 +1,8 @@
 /**
  * Establish Connexion
  */
-var socket = io.connect('http://localhost:4000');
+// var socket = io.connect('http://localhost:4000');
+var socket = io.connect('http://35.177.117.225:4000/');
 
 var contents    = document.getElementById('contents'),
     user	= document.getElementById('user'),

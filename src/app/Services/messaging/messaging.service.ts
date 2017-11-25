@@ -6,7 +6,9 @@ import * as io from 'socket.io-client';
 @Injectable()
 export class MessagingService {
 
-    private url: string = 'http://localhost:4000';
+    // private url: string = 'http://localhost:4000';
+    // private url: string = 'http://35.176.233.209';
+    private url: string = 'http://35.177.117.225:4000/';
     private socket: any;
 
     sendMessage(message: any) {

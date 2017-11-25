@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MessagingService} from '../../Services/messaging/messaging.service';
 import {AuthentificationService} from '../../Services/authentification.service';
+import {FlashMessagesService} from 'angular2-flash-messages';
 
 @Component({
     selector: 'app-messaging',
@@ -11,20 +12,29 @@ export class MessagingComponent implements OnInit {
 
     messages: any = [];
     connection: any;
-    message: any;
+    inputMessage: string;
     user: any;
 
     constructor(private messagingService: MessagingService,
-                private authentification: AuthentificationService) {}
+                private authentification: AuthentificationService, 
+                private flashMessages: FlashMessagesService) {}
 
     sendMessage() {
-        let chatMessage = {
-            user: this.user,
-            content: this.message
-        };
+        console.log(this.inputMessage);
         
-        this.messagingService.sendMessage(chatMessage);
-        chatMessage = null;
+        if (this.inputMessage === '' || this.inputMessage === null || this.inputMessage === undefined){
+            this.flashMessages.show('veillez saisir un message sur le champs', 
+                {cssClass: 'successInfo', timeout: 3000});
+        }else {
+            let chatMessage = {
+                user: this.user,
+                content: this.inputMessage
+            };
+
+            this.messagingService.sendMessage(chatMessage);
+            chatMessage = null;
+            this.inputMessage = '';
+        }
     }
 
     ngOnInit() {
