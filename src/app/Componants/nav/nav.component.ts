@@ -15,7 +15,7 @@ export class NavComponent implements OnInit {
         private flashMessagesService: FlashMessagesService
     ) {}
 
-    ngOnInit() {
+    ngOnInit() { 
     }
 
     onLogoutClick() {
