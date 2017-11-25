@@ -22,6 +22,7 @@ import { HistoriqueMouvementComponent } from './Componants/historique-mouvement/
 import { MessagingComponent } from './Componants/messaging/messaging.component';
 import { QuiSommmeNousComponent } from './Componants/FooterInfo/qui-sommme-nous/qui-sommme-nous.component';
 import { MentionLegalComponent } from './Componants/FooterInfo/mention-legal/mention-legal.component';
+import { NotFoundComponent } from './Componants/not-found/not-found.component';
 
 // Services
 import {AuthentificationService} from './Services/authentification.service';
@@ -42,7 +43,10 @@ const appRoutes: Routes = [
     {path: 'connexion', component: ConnexionComponent},
     {path: 'qui_sommes_nous', component: QuiSommmeNousComponent},
     {path: 'mention_legal', component: MentionLegalComponent},
-    {path: 'contact_nous', component: ContactComponent}
+    {path: 'contact_nous', component: ContactComponent},
+    
+    {path: '404', component: NotFoundComponent},
+    {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({
@@ -61,7 +65,8 @@ const appRoutes: Routes = [
         HistoriqueMouvementComponent,
         MessagingComponent,
         QuiSommmeNousComponent,
-        MentionLegalComponent
+        MentionLegalComponent,
+        NotFoundComponent
     ],
     imports: [
         BrowserModule,

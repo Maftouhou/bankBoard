@@ -20,16 +20,6 @@ body {
                             display: inline-block;
                         }
 
-                        /*&.left_arow {
-                            float: left;
-                            background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255,255,255,1) 0px, rgba(255,255,255,1) 10px);
-                        }
-
-                        &.right_arow {
-                            float: right;
-                            background-image: repeating-linear-gradient(135deg, transparent, transparent 5px, rgba(255,255,255,1) 0px, rgba(255,255,255,1) 10px);
-                        }*/
-
                         &.circle_header {
                             width: 50px;
                             height: 50px;
@@ -359,6 +349,36 @@ body {
                             cursor: pointer;
                         }
                     }
+
+                    &.not_found {
+                        text-align: center;
+                        margin-top: 80px;
+
+                        p {
+                            font-size: 21px;
+                            font-family: arial;
+                            
+                            span {
+                                &:first-of-type{
+                                    padding: 7px 20px;
+                                    border-right: 2px solid #e462a8;
+                                    background-color: #ffe5f7;
+                                    color: #950e56;
+                                }
+
+                                &:last-of-type {
+                                    padding-left: 10px;
+                                    padding-right: 10px;
+                                    font-size: 30px;
+                                    color: #c7008c;
+                                }
+                            }
+
+                            a {
+
+                            }
+                        }
+                    }
                 }
 
                 form {
@@ -513,5 +533,5 @@ body {
 }
 
 .active_tab_link {
-    
+
 }
