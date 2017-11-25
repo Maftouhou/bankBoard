@@ -20,8 +20,6 @@ export class MessagingComponent implements OnInit {
                 private flashMessages: FlashMessagesService) {}
 
     sendMessage() {
-        console.log(this.inputMessage);
-        
         if (this.inputMessage === '' || this.inputMessage === null || this.inputMessage === undefined){
             this.flashMessages.show('veillez saisir un message sur le champs', 
                 {cssClass: 'successInfo', timeout: 3000});
