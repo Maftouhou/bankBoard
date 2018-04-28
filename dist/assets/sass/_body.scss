@@ -1,0 +1,537 @@
+body {
+    div.wrapper {
+        width: 800px;
+        margin: 0 auto;
+        border: 1px solid gray;
+
+        header {
+            height: 60px;
+            border-bottom: 1px solid gray;
+            background-color: #673AB7;
+
+            div {
+                &.header_wrapper {
+                    padding-top: 5px;
+
+                    div {
+                        &.left_arow, &.right_arow {
+                            height: 10px;
+                            width: 50%;
+                            display: inline-block;
+                        }
+
+                        &.circle_header {
+                            width: 50px;
+                            height: 50px;
+                            border: 4px solid #ffffff;
+                            /*position: absolute;*/
+                            /*top: 5px;*/
+                            /*left: 49%;*/
+                            border-radius: 15px;
+                            background-color: #ffffff;
+                            margin: 0 auto;
+
+                            span {
+                                border: 1px solid black;
+                                display: block;
+                                text-align: center;
+                                font-size: 40px;
+                                border-radius: 30px;
+                                font-weight: bold;
+                                color: #cc0079;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        section {
+            min-height: 390px;
+            nav {
+                a.header_title {
+                    text-align: center;
+                    display: block;
+                    margin-bottom: 8px;
+                    margin-top: 8px;
+                    text-transform: uppercase;
+                    font-size: 25px;
+                    color: #673ab7;
+                    font-weight: bold;
+                }
+                div {
+                    &.menu_list {
+                        ul {
+                            text-align: center;
+
+                            li {
+                                display: inline-block;
+                                a {
+                                    font-family: arial;
+                                    padding: 2px 5px 2px 1px;
+                                    border-right: 1px dashed #673ab7;
+                                }
+                                &:last-of-type{
+                                    a {
+                                        border-right: 0;
+                                        color: #fff;
+                                        background-color: #b94486;
+                                        padding: 4px 8px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            main {
+                padding: 10px;
+                div {
+                    &.home_content{
+                        height: 300px;
+
+                        div {
+                            &.dashboard_button,
+                            &.registration_button {
+                                margin-top: 100px;
+                                text-align: center;
+                            }
+
+                            &.registration_button {
+                                a {
+
+                                }
+                            }
+                        }
+
+                        h1.home_title {
+                            text-align: center;
+                            margin-top: 40px;
+                            font-size: 20px;
+                            font-family: arial;
+                            color: #4e2777;
+
+                            span {
+                                background-color: #dac6ff;
+                                color: #673ab7;
+                                padding: 2px 7px;
+                                text-transform: uppercase;
+                                font-style: italic;
+                                font-weight: bold;
+                                border-left: 3px solid #673ab7;
+                            }
+                        }
+                    }
+
+                    &.dashboard_button, 
+                    &.registration_button {
+                        a {
+                            font-size: 18px;
+                            color: #ffffff;
+                            font-family: arial;
+                            background-color: #4e2777;
+                            padding: 8px 3px;
+
+                            span {
+                                border: 1px dashed #ffffff;
+                                padding: 4px 11px;
+                            }
+                        }
+                    }
+
+                    &.sold_wrapper, 
+                    &.transactions_wrapper{
+                        display: inline-block;
+                    }
+
+                    &.sold_wrapper {
+                        width: 130px;
+                        height: 70px;
+                        vertical-align: top;
+
+                        div {
+                            text-align: center;
+                            &.local_currency {
+                                background-color: #f2e4ff;
+                                padding: 5px 0;
+                                p {
+                                    font-size: 26px;
+                                    font-weight: bold;
+                                    color: #374680;
+                                }
+                            }
+                            &.foreign_currency {
+                                background-color: #673ab7;
+                                padding: 5px 0;
+                                p {
+                                    display: inline-block;
+                                    font-size: 12px;
+                                    color: #ffffff;
+                                }
+                            }
+                        }
+                    }
+
+                    &.transactions_wrapper {
+                        margin-left: 20px;
+                        ul {
+                            &.dashboard_transaction_list {
+                                li {
+                                    &:nth-child(odd){
+                                        background-color: #f2e4ff;
+                                    }
+                                    &:nth-child(even){ }
+
+                                    padding: 5px;
+                                    margin-bottom: 2px;
+                                    p {
+                                        font-family: arial;
+                                        color: #331d5a;
+                                        display: inline-block;
+                                        &:nth-child(1){
+                                            min-width: 75px;
+                                            font-weight: bold;
+                                        }
+                                        &:nth-child(2){
+                                            min-width: 100px;
+                                        }
+                                        &:nth-child(3){
+                                            min-width: 220px;
+                                        }
+                                        &:nth-child(4){
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        div {
+                            h2{font-weight: bold; text-transform: uppercase;}
+                            p, h2 {
+                                margin-bottom: 12px;
+                                font-size: 17px;
+                                font-family: arial;
+                                color: #4e2777;
+                            }
+
+                            ul{
+                                &.opperation_done,
+                                &.opperation_undone {
+                                    div {
+                                        width: 570px;
+                                        li {
+                                            &:nth-child(odd){
+                                                div {
+                                                    padding: 10px;
+                                                    background-color: #f2e4ff;
+                                                    margin-bottom: 10px;
+                                                }
+                                            }
+                                            div{
+                                                p{
+                                                    margin-bottom: 8px;
+                                                    span { font-weight: bold; }
+                                                    a {
+                                                        font-size: 18px;
+                                                        color: #fff;
+                                                        font-family: arial;
+                                                        background-color: #b94486;
+                                                        padding: 4px 8px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.profile_section {
+                        margin-top: 20px;
+                        h2 {
+                            margin-bottom: 12px;
+                            font-size: 17px;
+                            color: #4e2777;
+                            font-family: arial;
+                            font-weight: bold;
+
+                            span {
+                                text-transform: uppercase;
+                            }
+                        }
+
+                        ul {
+                            &.user_information,
+                            &.user_account_information {
+                                border-left: 2px solid #6f2384;
+                                padding-left: 10px;
+                                margin-bottom: 10px;
+
+                                li {
+                                    font-style: italic;
+                                    font-size: 18px;
+                                    color: #64357b;
+
+                                    &:first-child{
+                                        span {
+                                            color: #ab0036;
+                                            font-weight: bold;
+                                        }
+                                    }
+                                    &:last-child{
+                                        span {
+                                            font-weight: bold;
+                                            text-decoration: underline;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.flash-messages {
+                        div {
+                            padding: 10px;
+                            display: inline-block;
+                            margin-bottom: 10px;
+                            p {
+                                font-size: 18px;
+                                font-family: arial;
+                            }
+                        }
+                    }
+
+                    &.customer_service {
+                        h2{font-weight: bold; text-transform: uppercase;}
+                        p, h2 {
+                            margin-bottom: 12px;
+                            font-size: 17px;
+                            font-family: arial;
+                            color: #4e2777;
+                        }
+
+                        div {
+                            &.chat_messages {
+                                width: 300px;
+
+                                p {
+                                    &.thisUser {
+                                        text-align: left;
+                                        border: 1px solid #0f5094;
+                                        padding: 5px;
+                                        border-radius: 10px 10px 10px 0px;
+                                    }
+
+                                    &.autherUser {
+                                        text-align: right;
+                                        border: 1px solid #00bb5c;
+                                        padding: 5px;
+                                        border-radius: 10px 10px 0px 10px;
+                                    }
+                                    span{
+                                        font-weight: bold;
+                                    }
+                                }
+                            }
+                        }
+
+                        button {
+                            font-family: arial;
+                            font-size: 18px;
+                            background-color: #4e2777;
+                            height: 30px;
+                            width: 90px;
+                            border: 0;
+                            color: #ffffff;
+                            cursor: pointer;
+                        }
+                    }
+
+                    &.not_found {
+                        text-align: center;
+                        margin-top: 80px;
+
+                        p {
+                            font-size: 21px;
+                            font-family: arial;
+                            
+                            span {
+                                &:first-of-type{
+                                    padding: 7px 20px;
+                                    border-right: 2px solid #e462a8;
+                                    background-color: #ffe5f7;
+                                    color: #950e56;
+                                }
+
+                                &:last-of-type {
+                                    padding-left: 10px;
+                                    padding-right: 10px;
+                                    font-size: 30px;
+                                    color: #c7008c;
+                                }
+                            }
+
+                            a {
+
+                            }
+                        }
+                    }
+                }
+
+                form {
+                    margin-top: 10px;
+                    &.registration_form {
+                        fieldset {
+                            padding: 15px;
+                            border: 1px solid #471f8e;
+                            width: 490px;
+                            margin-bottom: 10px;
+
+                            legend {
+                                font-size: 17px;
+                                font-family: arial;
+                                color: #4e2777;
+                                font-weight: bold;
+                                text-transform: uppercase;
+                            }
+
+                            p {
+                                label {
+                                    min-width: 145px;
+                                    display: inline-block;
+                                }
+
+                                input[type="text"], 
+                                input[type="number"], 
+                                input[type="date"]{
+                                    background-color: #f1f1f1;
+                                    border: 0;
+                                    color: #2e2e2e;
+                                    height: 30px;
+                                    padding-left: 12px;
+                                    width: 244px;
+                                    border: 1px solid #673ab7;
+                                }
+
+                            }
+                        }
+                        p{
+                            input[type="submit"]{
+                                font-size: 18px;
+                                color: #fff;
+                                font-family: arial;
+                                background-color: #4e2777;
+                                height: 42px;
+                                width: 104px;
+                                border: 0;
+                            }
+                        }
+                        h2{font-weight: bold; text-transform: uppercase;}
+                        p, h2 {
+                            margin-bottom: 12px;
+                            font-size: 17px;
+                            font-family: arial;
+                            color: #4e2777;
+                        }
+                    }
+
+                    &.connexion_form,
+                    &.registration_form  {
+                        h2{font-weight: bold; text-transform: uppercase;}
+                        p, h2 {
+                            margin-bottom: 12px;
+                            font-size: 17px;
+                            font-family: arial;
+                            color: #4e2777;
+                        }
+                        p {
+                            label {
+                                min-width: 105px;
+                                display: inline-block;
+                            }
+                            input[type="text"], 
+                            input[type="number"],
+                            input[type="email"], 
+                            input[type="password"]{
+                                background-color: #f1f1f1;
+                                border: 0;
+                                color: #2e2e2e;
+                                height: 30px;
+                                padding-left: 12px;
+                                width: 244px;
+                                border: 1px solid #673ab7;
+                            }
+                            input[type="submit"]{
+                                font-size: 18px;
+                                color: #fff;
+                                font-family: arial;
+                                background-color: #4e2777;
+                                height: 42px;
+                                width: 104px;
+                                border: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        footer {
+            text-align: center;
+            border-top: 1px solid #673ab7;
+            background-color: #f2e4ff;
+            p {
+                display: inline-block;
+                margin: 10px 0px;
+                font-family: arial;
+                padding: 2px 5px 2px 1px;
+                border-right: 1px dashed #673ab7;
+
+                &:last-child{
+                    border: 0;
+                }
+            }
+        }
+    }
+}
+
+.sent_trans {
+    color: #ff0000 !important;
+}
+
+.received_trans {
+    color: #331d5a !important;
+}
+.showTrans{
+    display: block;
+}
+.hideTrans {
+    display: none;
+}
+
+.password_mach {
+    border: 1px solid #00bd00 !important;
+}
+
+.password_not_mach {
+    border: 1px solid red !important;
+}
+
+.errorInfo {
+    background-color: #ffade3;
+    border-right: 5px solid red;
+    color: #ad0000 !important;
+}
+
+.successInfo {
+    background-color: #c8a9ff;
+    border-right: 5px solid #673ab7;
+    color: #673ab7 !important;
+}
+
+.active_tab_link {
+
+}
