@@ -13,7 +13,7 @@ export class AuthService {
     registerUser(user: any) {
         let header = new Headers();
         header.append('Content-Type', 'Application/json');
-        return this.http.post('http://35.176.233.209/inscription', user, {headers: header}).map(res => res.json());
+        return this.http.post('http://localhost:4000/inscription', user, {headers: header}).map(res => res.json());
     }
 
 }

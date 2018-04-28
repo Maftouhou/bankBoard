@@ -14,13 +14,13 @@ export class AuthentificationService {
     registerUser(user: any) {
         let header = new Headers();
         header.append('Content-Type', 'Application/json');
-        return this.http.post('http://35.176.233.209/users/', user, {headers: header}).map(res => res.json());
+        return this.http.post('http://localhost:4000/users/', user, {headers: header}).map(res => res.json());
     }
     
     authenticateUser(user: any){
         let header = new Headers();
         header.append('Content-Type', 'Application/json');
-        return this.http.post('http://35.176.233.209/auth/', user, {headers: header}).map(res => res.json());
+        return this.http.post('http://localhost:4000/auth/', user, {headers: header}).map(res => res.json());
     }
     
     getProfile(){
@@ -28,7 +28,7 @@ export class AuthentificationService {
         let header = new Headers();
         header.append('Authorization', this.authToken);
         header.append('Content-Type', 'Application/json');
-        return this.http.get('http://35.176.233.209/users/'+this.user._id, {headers: header}).map(res => res.json());
+        return this.http.get('http://localhost:4000/users/'+this.user._id, {headers: header}).map(res => res.json());
     }
     
     getTocken(){

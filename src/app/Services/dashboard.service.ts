@@ -17,7 +17,7 @@ export class DashboardService {
             header.append('Content-Type', 'Application/json');
 
             return {
-                transaction: this.http.get('http://35.176.233.209/instant_opp/?userId='+this.authentificationService.user._id, {headers: header}).map(res => res.json()),
+                transaction: this.http.get('http://localhost:4000/instant_opp/?userId='+this.authentificationService.user._id, {headers: header}).map(res => res.json()),
                 user_infos: this.authentificationService.user
             };
         } else {
@@ -32,7 +32,7 @@ export class DashboardService {
             header.append('Authorization', this.authentificationService.authToken);
             header.append('Content-Type', 'Application/json');
 
-            return this.http.get('http://35.176.233.209/users/' + this.authentificationService.user._id, {headers: header}).map(res => res.json());
+            return this.http.get('http://localhost:4000/users/' + this.authentificationService.user._id, {headers: header}).map(res => res.json());
         } else {
             this.router.navigate(['/connexion']);
         }
