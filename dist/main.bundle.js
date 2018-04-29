@@ -1977,7 +1977,7 @@ var _a, _b;
 var environment = {
     production: true,
     SERVER_ADDR: "192.168.10.30",
-    SERVER_PORT: "4000"
+    SERVER_PORT: "5000"
 };
 //# sourceMappingURL=environment.js.map
 
