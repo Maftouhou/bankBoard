@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   SERVER_ADDR: "127.0.0.1",
-  SERVER_PORT: "4000"
+  SERVER_PORT: "5000"
 };
