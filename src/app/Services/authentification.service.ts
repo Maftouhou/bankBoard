@@ -2,25 +2,31 @@ import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {tokenNotExpired} from 'angular2-jwt';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthentificationService {
     authToken: any;
     user: any;
+    env: any;
     
     constructor(private http: Http) { 
+        this.env = environment;
     }
     
     registerUser(user: any) {
         let header = new Headers();
         header.append('Content-Type', 'Application/json');
-        return this.http.post('http://localhost:4000/users/', user, {headers: header}).map(res => res.json());
+        console.log('http://' + this.env.SERVER_ADDR + ':' + this.env.SERVER_PORT);
+        return this.http.post('http://' + this.env.SERVER_ADDR + ':' + this.env.SERVER_PORT + '/users/', user, {headers: header}).map(res => res.json());
     }
     
     authenticateUser(user: any){
         let header = new Headers();
         header.append('Content-Type', 'Application/json');
-        return this.http.post('http://localhost:4000/auth/', user, {headers: header}).map(res => res.json());
+        console.log('http://' + this.env.SERVER_ADDR + ':' + this.env.SERVER_PORT);
+//        return this.http.post('http://localhost:4000/auth/', user, {headers: header}).map(res => res.json());
+        return this.http.post('http://' + this.env.SERVER_ADDR + ':' + this.env.SERVER_PORT + '/auth/', user, {headers: header}).map(res => res.json());
     }
     
     getProfile(){
@@ -28,7 +34,8 @@ export class AuthentificationService {
         let header = new Headers();
         header.append('Authorization', this.authToken);
         header.append('Content-Type', 'Application/json');
-        return this.http.get('http://localhost:4000/users/'+this.user._id, {headers: header}).map(res => res.json());
+        console.log('http://' + this.env.SERVER_ADDR + ':' + this.env.SERVER_PORT);
+        return this.http.get('http://' + this.env.SERVER_ADDR + ':' + this.env.SERVER_PORT + '/users/'+this.user._id, {headers: header}).map(res => res.json());
     }
     
     getTocken(){
